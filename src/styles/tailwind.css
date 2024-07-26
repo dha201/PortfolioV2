@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .nav-link {
+    position: relative;
+    padding-left: 4rem;
+    transition: padding-left 0.3s ease, color 0.3s ease;
+  }
+
+  .nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 3rem;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+    transition: width 0.3s ease, background-color 0.3s ease;
+  }
+
+  .nav-link:hover::before,
+  .nav-link.active-section::before {
+    width: 6rem;
+    background-color: white;
+  }
+
+  .nav-link:hover,
+  .nav-link.active-section {
+    padding-left: 7rem;
+    color: white;
+  }
+
+  .cursor-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .cursor-blur {
+    @apply rounded-full bg-white/5 absolute;
+    filter: blur(25px);
+    transition: all 0.1s ease;
+    transform: translate(-50%, -50%);
+  }
+
+  .cursor-blur:nth-child(1) {
+    @apply w-200 h-200;
+    z-index: 1;
+  }
+
+  .cursor-blur:nth-child(2) {
+    @apply w-80 h-80;
+    z-index: 0;
+  }
+
+  .cursor-blur:nth-child(3) {
+    @apply w-64 h-64;
+    z-index: -1;
+  }
+
+  .cursor-blur:nth-child(4) {
+    @apply w-48 h-48;
+    z-index: -2;
+  }
+}
